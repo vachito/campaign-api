@@ -29,6 +29,9 @@ class CampaignStoreRequest extends FormRequest
             'total_db' => 'required',
             'bucket_id' => 'required|exists:buckets,id',
             'template_meta_id' => 'required|exists:template_metas,id',
+            'metrics' => 'required|array',
+            'metrics.*.status_message_id' => 'required|exists:status_messages,id',
+            'metrics.*.quantity' => 'numeric'
         ];
     }
 
@@ -42,6 +45,7 @@ class CampaignStoreRequest extends FormRequest
             'bucket_id.exists' => 'El bolsón seleccionado no esta registrado',
             'template_meta_id.required' => 'El ID de la meta de la plantilla es obligatorio',
             'template_meta_id.exists' => 'El ID de la meta de la plantilla no esta registrado',
+            'metrics.*.status_message_id.required' => 'El ID del mensaje de estado es obligatorio',
         ];
     }
 }

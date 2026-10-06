@@ -24,7 +24,7 @@ class CampaignController extends Controller
 
     public function store(CampaignStoreRequest $request){
         $validated = $request->validated();
-
+        
         try {
             $campaing = $this->service->create($validated);
             return $this->successResponse($campaing, 'Campaña almacenada correctamente', 201);
