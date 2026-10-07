@@ -16,10 +16,10 @@ return new class extends Migration
             $table->uuid();
             $table->string('name');
             $table->dateTime('dispatch_date');
-            $table->string('dispatch_template');
+            $table->string('dispatch_template')->nullable();
             $table->integer('total_db');
-            $table->foreignId('bucket_id')->constrained();
-            $table->foreignId('template_meta_id')->constrained();
+            $table->foreignId('bucket_id')->constrained()->nullOnDelete();
+            $table->foreignId('template_meta_id')->constrained()->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

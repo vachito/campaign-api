@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CampaignStoreRequest;
 use App\Http\Requests\CampaignUpdateRequest;
+use App\Http\Resources\CampaignDetailResource;
 use App\Http\Resources\CampaignsResource;
 use App\Models\Campaign;
-use Illuminate\Http\Request;
 use App\Services\CampaignService;
 
 class CampaignController extends Controller
@@ -35,7 +35,9 @@ class CampaignController extends Controller
 
     public function show(Campaign $campaign){
         try {
-            return $this->successResponse($campaign, 'Campaña obtenida correctamente', 200);
+            $fullCampaign = $this->service->find($campaign);
+
+            return $this->successResponse(new CampaignDetailResource($fullCampaign), 'Campaña obtenida correctamente', 200);
         } catch (\Throwable $th) {
             return $this->errorResponse('Hubo un error al obtener la campaña',500,$th);
         }

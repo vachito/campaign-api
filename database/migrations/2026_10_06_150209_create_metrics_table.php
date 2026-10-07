@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('metrics', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->foreignId('status_message_id')->constrained();
-            $table->foreignId('campaign_id')->constrained();
+            $table->foreignId('status_message_id')->constrained()->nullOnDelete();
+            $table->foreignId('campaign_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

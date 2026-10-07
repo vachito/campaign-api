@@ -45,7 +45,7 @@ class CampaignStoreRequest extends FormRequest
             'bucket_id.exists' => 'El bolsón seleccionado no esta registrado',
             'template_meta_id.required' => 'El ID de la meta de la plantilla es obligatorio',
             'template_meta_id.exists' => 'El ID de la meta de la plantilla no esta registrado',
-            'metrics.*.status_message_id.required' => 'El ID del mensaje de estado es obligatorio',
+            'metrics.*.status_message_id.required' => 'Debe seleccionar una métrica'
         ];
     }
 }

@@ -30,6 +30,9 @@ class CampaignUpdateRequest extends FormRequest
             'total_db' => 'sometimes|required',
             'bucket_id' => 'sometimes|required|exists:buckets,id',
             'template_meta_id' => 'sometimes|required|exists:template_metas,id',
+            'metrics' => 'sometimes|required|array',
+            'metrics.*.status_message_id' => 'sometimes|required|exists:status_messages,id',
+            'metrics.*.quantity' => 'sometimes|numeric'
         ];
     }
 
@@ -43,6 +46,7 @@ class CampaignUpdateRequest extends FormRequest
             'bucket_id.exists' => 'El bolsón seleccionado no esta registrado',
             'template_meta_id.required' => 'El ID de la meta de la plantilla es obligatorio',
             'template_meta_id.exists' => 'El ID de la meta de la plantilla no esta registrado',
+            'metrics.*.status_message_id.required' => 'Debe seleccionar una métrica'
         ];
     }
 }
