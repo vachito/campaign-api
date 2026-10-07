@@ -25,7 +25,7 @@ class CampaignStoreRequest extends FormRequest
         return [
             'name' => 'required | string',
             'dispatch_date' => 'required',
-            'dispatch_template' => 'sometimes|required',
+            'dispatch_template' => 'sometimes',
             'total_db' => 'required',
             'bucket_id' => 'required|exists:buckets,id',
             'template_meta_id' => 'required|exists:template_metas,id',
